@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'rake'
 
+require File.dirname(__FILE__) + '/lib/wand'
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -9,6 +11,7 @@ begin
     gem.email    = 'nunemaker@gmail.com'
     gem.homepage = 'http://github.com/jnunemaker/wand'
     gem.authors  = ['John Nunemaker']
+    gem.version  = Wand::Version
     
     gem.add_dependency 'mime-types'
     gem.add_development_dependency 'shoulda'

@@ -1,6 +1,8 @@
 require 'mime/types'
 
 module Wand
+  Version = '0.1'
+  
   def self.wave(path)
     type = MIME::Types.type_for(path)[0].to_s
     type = `#{executable} --mime --brief #{path}`.split(';')[0] if type.nil? || type == ''
