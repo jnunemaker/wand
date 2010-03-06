@@ -1,6 +1,6 @@
 = wand
 
-Description goes here.
+Mime-Type gem with fallback to unix file command. Never use this when path/filename is user input as there is no escaping.
 
 == Note on Patches/Pull Requests
  
