@@ -5,7 +5,7 @@ module Wand
   
   def self.wave(path)
     type = MIME::Types.type_for(path)[0].to_s
-    type = `#{executable} --mime --brief #{path}`.split(';')[0] if type.nil? || type == ''
+    type = from_executable(path).split(';')[0].strip if type.nil? || type == ''
     type = nil if type =~ /cannot\sopen/
     type
   end
@@ -18,4 +18,9 @@ module Wand
   def self.executable=(path)
     @executable = path
   end
+  
+  private
+    def self.from_executable(path)
+      `#{executable} --mime --brief #{path}`
+    end
 end

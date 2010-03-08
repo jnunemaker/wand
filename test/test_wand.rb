@@ -44,5 +44,10 @@ class TestWand < Test::Unit::TestCase
       Wand.executable = '/usr/local/bin/file'
       assert_equal '/usr/local/bin/file', Wand.executable
     end
+    
+    should "strip newlines and such" do
+      Wand.expects(:from_executable).returns("image/jpeg\n")
+      assert_equal "image/jpeg", Wand.wave(FilePath.join(name).expand_path.to_s)
+    end
   end
 end

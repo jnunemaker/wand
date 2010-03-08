@@ -16,6 +16,7 @@ begin
     gem.add_dependency 'mime-types'
     gem.add_development_dependency 'shoulda'
     gem.add_development_dependency 'yard'
+    gem.add_development_dependency 'mocha'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
