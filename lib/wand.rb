@@ -2,7 +2,7 @@ require 'mime/types'
 require 'shellwords'
 
 module Wand
-  Version = '0.1'
+  Version = '0.2'
   
   def self.wave(path)
     type = MIME::Types.type_for(path)[0].to_s
