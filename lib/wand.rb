@@ -1,5 +1,4 @@
 require 'mime/types'
-require 'shellwords'
 
 module Wand
   Version = '0.2'
@@ -21,6 +20,6 @@ module Wand
   end
   
   def self.execute_file_cmd(path)
-    `#{executable} --mime --brief #{path.shellescape}`
+    `#{executable} --mime --brief #{path}`
   end
 end

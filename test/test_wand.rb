@@ -49,10 +49,5 @@ class TestWand < Test::Unit::TestCase
       Wand.expects(:execute_file_cmd).returns("image/jpeg\n")
       assert_equal "image/jpeg", Wand.wave(FilePath.join(name).expand_path.to_s)
     end
-
-    should "escape path" do
-      output = Wand.execute_file_cmd(FilePath.join(name).expand_path.to_s + ' && echo $USER')
-      assert_match /cannot\sopen/, output
-    end
   end
 end
