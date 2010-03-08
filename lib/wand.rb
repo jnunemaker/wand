@@ -11,7 +11,6 @@ module Wand
   end
 
   def self.executable
-    return @executable if defined?(@executable)
     @executable ||= `which file`.chomp
   end
 
