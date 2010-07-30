@@ -15,6 +15,7 @@ class TestWand < Test::Unit::TestCase
       'ol_tiny.jpg'    => 'image/jpeg',
       'ol_tiny.png'    => 'image/png',
       'styles.css'     => 'text/css',
+      'LICENSE'        => 'text/plain',
     }.each_pair do |name, type|
       should "use mime type gem if it returns type #{name}" do
         assert_equal type, Wand.wave(FilePath.join(name).expand_path.to_s)
@@ -48,6 +49,11 @@ class TestWand < Test::Unit::TestCase
     should "strip newlines and such" do
       Wand.expects(:execute_file_cmd).returns("image/jpeg\n")
       assert_equal "image/jpeg", Wand.wave(FilePath.join(name).expand_path.to_s)
+    end
+
+    should "support old file output format" do
+      Wand.expects(:execute_file_cmd).returns("text/plain charset=us-ascii\n")
+      assert_equal "text/plain", Wand.wave('')
     end
   end
 end
