@@ -32,6 +32,10 @@ class TestWand < Test::Unit::TestCase
       end
     end
 
+    should "return value from mime type when original_filename provided" do
+      assert_equal 'audio/mpeg', Wand.wave('some_temp_file', :original_filename => 'test.mp3')
+    end
+
     should "return nil when mime type and file fail" do
       assert_nil Wand.wave('AVGARDD.eot')
     end
