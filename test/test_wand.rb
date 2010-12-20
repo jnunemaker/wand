@@ -33,6 +33,10 @@ class TestWand < Test::Unit::TestCase
       end
     end
 
+    should "return value from mime type when original_filename provided" do
+      assert_equal 'audio/mpeg', Wand.wave('some_temp_file', :original_filename => 'test.mp3')
+    end
+
     should "return nil when mime type and file fail" do
       assert_nil Wand.wave('AVGARDD.eot')
     end
@@ -52,8 +56,13 @@ class TestWand < Test::Unit::TestCase
     end
 
     should "support old file output format" do
-      Wand.expects(:execute_file_cmd).returns("text/plain charset=us-ascii\n")
+      Wand.expects(:execute_file_cmd).returns("text/plain; charset=us-ascii\n")
       assert_equal "text/plain", Wand.wave('')
+    end
+
+    should "return nil if file output matches cannot" do
+      Wand.expects(:execute_file_cmd).returns("cannot open file")
+      assert_equal nil, Wand.wave('')
     end
   end
 end

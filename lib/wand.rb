@@ -1,9 +1,9 @@
 require 'mime/types'
 
 module Wand
-  def self.wave(path)
-    type = MIME::Types.type_for(path)[0].to_s
-    type = execute_file_cmd(path).split(/[; ]/)[0].strip if type.nil? || type == ''
+  def self.wave(path, options={})
+    type = MIME::Types.type_for(options[:original_filename] || path)[0].to_s
+    type = execute_file_cmd(path).split(';')[0].strip if type.nil? || type == ''
     type = nil if type =~ /^cannot/i
     type
   end
