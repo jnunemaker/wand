@@ -1,0 +1,23 @@
+PATH
+  remote: .
+  specs:
+    wand (0.2.1)
+      mime-types
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    mime-types (1.16)
+    mocha (0.9.10)
+      rake
+    rake (0.8.7)
+    shoulda (2.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mime-types
+  mocha
+  shoulda
+  wand!
