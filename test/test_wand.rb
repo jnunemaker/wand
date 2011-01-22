@@ -3,7 +3,7 @@ require 'helper'
 class TestWand < Test::Unit::TestCase
   context "Wand" do
     setup do
-      Wand.executable = `which file`.chomp
+      Wand.executable = nil
     end
 
     {
@@ -63,6 +63,10 @@ class TestWand < Test::Unit::TestCase
     should "return nil if file output matches cannot" do
       Wand.expects(:execute_file_cmd).returns("cannot open file")
       assert_equal nil, Wand.wave('')
+    end
+
+    should "properly handle bad stuff" do
+      assert_nothing_raised { Wand.wave(';blah') }
     end
   end
 end

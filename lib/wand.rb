@@ -1,9 +1,10 @@
 require 'mime/types'
+require 'safe_shell'
 
 module Wand
   def self.wave(path, options={})
     type = MIME::Types.type_for(options[:original_filename] || path)[0].to_s
-    type = execute_file_cmd(path).split(';')[0].strip if type.nil? || type == ''
+    type = parse_type(execute_file_cmd(path)) if blank?(type)
     type = nil if type =~ /^cannot/i
     type
   end
@@ -16,7 +17,16 @@ module Wand
     @executable = path
   end
 
+private
+  def self.parse_type(output)
+    output.split(';')[0].strip
+  end
+
   def self.execute_file_cmd(path)
-    `#{executable} --mime --brief #{path}`
+    SafeShell.execute("#{executable}", "--mime", "--brief", path)
+  end
+
+  def self.blank?(str)
+    str.nil? || str == ''
   end
 end

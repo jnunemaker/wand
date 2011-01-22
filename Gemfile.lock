@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    wand (0.2.1)
+    wand (0.3)
       mime-types
+      safe_shell (~> 1.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -11,6 +12,7 @@ GEM
     mocha (0.9.10)
       rake
     rake (0.8.7)
+    safe_shell (1.0.0)
     shoulda (2.11.3)
 
 PLATFORMS
@@ -19,5 +21,6 @@ PLATFORMS
 DEPENDENCIES
   mime-types
   mocha
+  safe_shell (~> 1.0.0)
   shoulda
   wand!

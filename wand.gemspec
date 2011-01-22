@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Mime-Type gem with fallback to unix file command}
 
   s.add_dependency 'mime-types'
+  s.add_dependency 'safe_shell', '~> 1.0.0'
 
   s.add_development_dependency 'shoulda'
   s.add_development_dependency 'mocha'
