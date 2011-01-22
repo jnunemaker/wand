@@ -68,5 +68,10 @@ class TestWand < Test::Unit::TestCase
     should "properly handle bad stuff" do
       assert_nothing_raised { Wand.wave(';blah') }
     end
+
+    should "handle unexpected results frome execute file command" do
+      Wand.expects(:execute_file_cmd).returns('')
+      assert_equal nil, Wand.wave('')
+    end
   end
 end

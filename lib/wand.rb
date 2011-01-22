@@ -19,7 +19,9 @@ module Wand
 
 private
   def self.parse_type(output)
-    output.split(';')[0].strip
+    type = output.split(';')[0]
+    type = type.strip unless type.nil?
+    type
   end
 
   def self.execute_file_cmd(path)
